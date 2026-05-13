@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後龍優選：蟬花與在地農創 | 自然的恩賜</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'earth-white': '#F9F7F2',
+                        'forest-green': '#2D4F1E',
+                        'wood-brown': '#8B5E3C',
+                        'clay-gray': '#7D7C78',
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F9F7F2;
+            color: #2D4F1E;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .cart-drawer {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover .buy-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* 隱藏捲軸但保留功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-40 transition-all duration-300 px-6 py-4 md:px-12" id="main-nav">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-serif font-bold tracking-widest text-forest-green">後龍優選</h1>
+            <nav class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-medium">
+                <a href="#hero" class="hover:text-wood-brown transition">首頁</a>
+                <a href="#story" class="hover:text-wood-brown transition">農創故事</a>
+                <a href="#products" class="hover:text-wood-brown transition">限定選物</a>
+                <a href="#contact" class="hover:text-wood-brown transition">預約諮詢</a>
+            </nav>
+            <div class="flex items-center space-x-6">
+                <button onclick="toggleCart()" class="relative p-2">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-wood-brown text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </button>
+                <button class="md:hidden text-xl"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <!-- 使用高品質風景佔位圖 -->
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2000" alt="Houlong Nature" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h2 class="text-white text-sm tracking-[0.5em] mb-6 reveal">自然的恩賜，後龍的記憶</h2>
+            <h1 class="text-white text-5xl md:text-7xl font-serif mb-8 leading-tight reveal" style="transition-delay: 200ms;">蟬花與在地農創<br><span class="italic font-light opacity-90">Houlong Selection</span></h1>
+            <a href="#products" class="inline-block border border-white text-white px-10 py-3 rounded-full hover:bg-white hover:text-forest-green transition-all duration-500 reveal" style="transition-delay: 400ms;">探索選物</a>
+        </div>
+    </section>
+
+    <section id="story" class="py-24 px-6 md:px-12 bg-earth-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1000" alt="Farmer Hands" class="rounded-2xl shadow-2xl">
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <span class="text-wood-brown font-medium tracking-widest mb-4 block">農人的執著</span>
+                <h3 class="text-4xl font-serif mb-6 leading-relaxed text-forest-green text-3xl font-bold">在大地沉睡的生命<br>蛻變成清晨的希望</h3>
+                <p class="text-clay-gray leading-loose mb-8">
+                    蟬花，是大自然神祕的贈與。在後龍這片充滿海風與陽光的土地上，農人們依循古法，不疾不徐地採集每一朵珍貴的蟬花。我們不只販售產品，更是傳遞一份對土地的溫柔與敬意。
+                </p>
+                <div class="flex items-center space-x-4 border-l-2 border-wood-brown pl-6">
+                    <p class="italic text-sm text-clay-gray font-serif">「與自然共生，是我們唯一的採集準則。」 — 後龍在地農人</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <div>
+                    <h3 class="text-3xl font-serif text-forest-green font-bold">限定選物</h3>
+                    <p class="text-clay-gray mt-2 font-medium">Seasonal Collections</p>
+                </div>
+                <div class="text-sm tracking-widest text-wood-brown border-b border-wood-brown pb-1 cursor-pointer">查看所有</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="product-grid">
+                <!-- 商品由 JS 動態生成 -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 md:px-12 bg-forest-green text-earth-white">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h3 class="text-3xl font-serif mb-8 font-bold">尋求專業建議或大量預約</h3>
+            <p class="mb-12 opacity-80 max-w-xl mx-auto font-medium">無論是蟬花的飲用方式，或是農創產品的合作，歡迎留下您的訊息，我們將由專人與您聯繫。</p>
+            
+            <form id="contact-form" class="grid md:grid-cols-2 gap-6 text-left">
+                <div class="space-y-2">
+                    <label class="text-xs tracking-widest uppercase opacity-70">姓名</label>
+                    <input type="text" required class="w-full bg-transparent border-b border-white/30 py-3 focus:border-white outline-none transition px-2">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-xs tracking-widest uppercase opacity-70">電子郵件</label>
+                    <input type="email" required class="w-full bg-transparent border-b border-white/30 py-3 focus:border-white outline-none transition px-2">
+                </div>
+                <div class="md:col-span-2 space-y-2 mt-4">
+                    <label class="text-xs tracking-widest uppercase opacity-70">您的訊息</label>
+                    <textarea rows="4" class="w-full bg-transparent border border-white/30 rounded-lg p-4 focus:border-white outline-none transition mt-2"></textarea>
+                </div>
+                <div class="md:col-span-2 text-center mt-6">
+                    <button type="submit" class="bg-earth-white text-forest-green px-12 py-4 rounded-full font-bold hover:bg-wood-brown hover:text-white transition duration-300">提交訊息</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 h-screen w-full md:w-[400px] bg-earth-white z-[60] shadow-2xl translate-x-full flex flex-col">
+        <div class="p-8 border-b border-gray-200 flex justify-between items-center">
+            <h4 class="text-xl font-serif font-bold">購物清單</h4>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+        </div>
+        
+        <div id="cart-items" class="flex-grow overflow-y-auto p-8 no-scrollbar space-y-6">
+            <!-- 購物車項目 -->
+        </div>
+
+        <div class="p-8 border-t border-gray-200 bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-clay-gray">總計金額</span>
+                <span class="text-2xl font-serif font-bold text-forest-green" id="cart-total">NT$ 0</span>
+            </div>
+            <button class="w-full bg-forest-green text-white py-4 rounded-xl font-bold hover:bg-wood-brown transition duration-300 shadow-lg">前往結帳</button>
+        </div>
+    </div>
+
+    <footer class="py-12 border-t border-gray-200 text-center text-clay-gray text-sm">
+        <p>© 2024 後龍優選｜蟬花與在地農創。保留所有權利。</p>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: "極上・野生蟬花", price: 1280, tag: "限量", img: "https://images.unsplash.com/photo-1544070078-a212eda27b49?auto=format&fit=crop&q=80&w=600" },
+            { id: 2, name: "農創大地・蟬花茶包", price: 650, tag: "熱銷", img: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=600" },
+            { id: 3, name: "後龍原生・禮盒組", price: 2100, tag: "推薦", img: "https://images.unsplash.com/photo-1512413316925-fd4b93f31521?auto=format&fit=crop&q=80&w=600" },
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('houlong-cart')) || [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card group reveal bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <span class="absolute top-4 left-4 bg-wood-brown text-white text-[10px] px-3 py-1 rounded-full tracking-widest">${p.tag}</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-serif mb-2 text-forest-green">${p.name}</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-clay-gray font-medium">NT$ ${p.price.toLocaleString()}</span>
+                            <button onclick="addToCart(${p.id})" class="buy-btn bg-forest-green text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 hover:bg-wood-brown">
+                                <i class="fa-solid fa-plus mr-2"></i>加入購物車
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            drawer.classList.toggle('translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+            showAddedMessage();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function updateCart() {
+            localStorage.setItem('houlong-cart', JSON.stringify(cart));
+            
+            // 更新計數
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = count;
+
+            // 渲染項目
+            const cartItemsContainer = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-center text-clay-gray mt-10">購物車目前是空的</p>`;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center space-x-4 border-b border-gray-100 pb-4">
+                        <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover">
+                        <div class="flex-grow">
+                            <h5 class="font-serif text-sm">${item.name}</h5>
+                            <p class="text-xs text-clay-gray">NT$ ${item.price.toLocaleString()} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-gray-300 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `).join('');
+            }
+
+            // 更新總計
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').innerText = `NT$ ${total.toLocaleString()}`;
+        }
+
+        function showAddedMessage() {
+            // 簡易模擬加入成功提示
+            const msg = document.createElement('div');
+            msg.className = "fixed bottom-10 left-1/2 -translate-x-1/2 bg-forest-green text-white px-6 py-3 rounded-full z-[100] shadow-xl text-sm animate-bounce font-medium";
+            msg.innerText = "已成功加入購物車！";
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
+        }
+
+        // 捲動揭示動畫
+        function handleReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 50) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // 導覽列陰影
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-2');
+                nav.classList.add('py-4');
+            }
+            handleReveal();
+        });
+
+        // 初始載入
+        window.onload = () => {
+            renderProducts();
+            updateCart();
+            setTimeout(handleReveal, 100);
+            
+            // 表單提交模擬
+            document.getElementById('contact-form').onsubmit = (e) => {
+                e.preventDefault();
+                alert("感謝您的訊息，我們將儘速與您聯繫！");
+                e.target.reset();
+            };
+        };
+    </script>
+</body>
+</html>
